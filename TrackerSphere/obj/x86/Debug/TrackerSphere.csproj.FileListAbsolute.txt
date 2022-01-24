@@ -1,0 +1,6 @@
+/home/mikey/Projects/TrackerSphere/TrackerSphere/bin/Debug/TrackerSphere.exe
+/home/mikey/Projects/TrackerSphere/TrackerSphere/bin/Debug/TrackerSphere.pdb
+/home/mikey/Projects/TrackerSphere/TrackerSphere/obj/x86/Debug/TrackerSphere.csprojAssemblyReference.cache
+/home/mikey/Projects/TrackerSphere/TrackerSphere/obj/x86/Debug/TrackerSphere.csproj.CoreCompileInputs.cache
+/home/mikey/Projects/TrackerSphere/TrackerSphere/obj/x86/Debug/TrackerSphere.exe
+/home/mikey/Projects/TrackerSphere/TrackerSphere/obj/x86/Debug/TrackerSphere.pdb

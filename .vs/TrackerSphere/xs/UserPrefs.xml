@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{C19CFB90-20E4-43D7-AA7C-4FADB2AEB23C}|Default">
+  <MonoDevelop.Ide.ItemProperties.TrackerSphere PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TrackerSphere/MainWindow.cs">
+    <Files>
+      <File FileName="TrackerSphere/Program.cs" Line="1" Column="1" />
+      <File FileName="TrackerSphere/gtk-gui/MainWindow.cs" Line="1" Column="1" />
+      <File FileName="TrackerSphere/MainWindow.cs" Line="22" Column="35" />
+      <File FileName="TrackerSphere/SimulateSpheres.cs" Line="27" Column="33" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TrackerSphere" expanded="True">
+            <Node name="TrackerSphere" expanded="True">
+              <Node name="MainWindow.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
