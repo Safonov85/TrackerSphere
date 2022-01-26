@@ -8,7 +8,7 @@ public partial class MainWindow : Gtk.Window
     SimulateSpheres simSphere = new SimulateSpheres();
     PointD sphere;
     double sphereVolume = 50;
-    double speed = 5;
+    double speed = 20;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
@@ -22,6 +22,8 @@ public partial class MainWindow : Gtk.Window
         sphere.Y = GiveRandomNum();
 
         ClockStart();
+
+
     }
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)
@@ -32,7 +34,7 @@ public partial class MainWindow : Gtk.Window
 
     void ClockStart()
     {
-        GLib.Timeout.Add(100, new GLib.TimeoutHandler(Update));
+        GLib.Timeout.Add(9, new GLib.TimeoutHandler(Update));
     }
 
 
