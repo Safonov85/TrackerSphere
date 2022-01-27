@@ -9,6 +9,7 @@ public partial class MainWindow : Gtk.Window
     PointD sphere;
     double sphereVolume = 50;
     double speed = 20;
+    double sphereY;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
@@ -20,6 +21,7 @@ public partial class MainWindow : Gtk.Window
 
         sphere.X = drawingArea.WidthRequest;
         sphere.Y = GiveRandomNum();
+        //sphereY = sphere.Y;
 
         ClockStart();
 
@@ -34,7 +36,7 @@ public partial class MainWindow : Gtk.Window
 
     void ClockStart()
     {
-        GLib.Timeout.Add(9, new GLib.TimeoutHandler(Update));
+        GLib.Timeout.Add(20, new GLib.TimeoutHandler(Update));
     }
 
 
@@ -44,7 +46,6 @@ public partial class MainWindow : Gtk.Window
         DrawBlackScreen();
 
         CreateCircle();
-
 
 
         return true;
@@ -81,10 +82,10 @@ public partial class MainWindow : Gtk.Window
         height = Allocation.Height;
 
         sphere.X = sphere.X - speed;
+        sphereY = 5 + sphereY;
 
 
-
-        circle.Translate(sphere.X, sphere.Y);
+        circle.Translate(sphere.X, sphere.Y + sphereY);
         circle.Arc(0, 0, sphereVolume, 0, 2 * Math.PI);
         circle.StrokePreserve();
 

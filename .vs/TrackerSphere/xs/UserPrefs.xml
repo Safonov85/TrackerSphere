@@ -4,7 +4,7 @@
     <Files>
       <File FileName="TrackerSphere/Program.cs" Line="1" Column="1" />
       <File FileName="TrackerSphere/gtk-gui/MainWindow.cs" Line="1" Column="1" />
-      <File FileName="TrackerSphere/MainWindow.cs" Line="67" Column="9" />
+      <File FileName="TrackerSphere/MainWindow.cs" Line="24" Column="11" />
       <File FileName="TrackerSphere/SimulateSpheres.cs" Line="27" Column="33" />
     </Files>
     <Pads>
