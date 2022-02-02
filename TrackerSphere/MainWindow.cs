@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cairo;
 using Gtk;
+
 
 
 
@@ -12,8 +14,15 @@ public partial class MainWindow : Gtk.Window
     double sphereVolume = 50;
     double speed = 20;
     double sphereY;
-    double dotVolume = 3;
+    double dotVolume = 20;
     double dotRed = 0;
+    double dotTransparent = 1;
+    List<PointD> dots = new List<PointD>();
+    List<double> dotTranspList = new List<double>();
+
+    DateTime start;
+
+    //KeyPressEvent += KeyPress;
 
     int widthScreen, heightScreen;
 
@@ -32,10 +41,16 @@ public partial class MainWindow : Gtk.Window
         widthScreen = drawingArea.WidthRequest;
         heightScreen = drawingArea.HeightRequest;
 
+        start = DateTime.UtcNow;
         
 
-        dotX = drawingArea.WidthRequest / 2;
-        dotY = drawingArea.HeightRequest / 2;
+        dot.X = drawingArea.WidthRequest / 2;
+        dot.Y = drawingArea.HeightRequest / 2;
+        dots.Add(dot);
+
+        dotTranspList.Add(dotTransparent);
+        //statusbar.Activate();
+
 
         ClockStart();
 
@@ -50,17 +65,29 @@ public partial class MainWindow : Gtk.Window
 
     void ClockStart()
     {
-        GLib.Timeout.Add(2, new GLib.TimeoutHandler(Update));
+        GLib.Timeout.Add(10, new GLib.TimeoutHandler(Update));
     }
 
 
     // Simulation
     bool Update()
     {
-        DrawBlackScreen();
+        //drawingArea.GdkWindow.Clear();
+        TimeSpan current = DateTime.UtcNow - start;
+        double getSeconds = current.TotalSeconds;
+        this.Title = getSeconds.ToString("0");
+        progressbar.Fraction = getSeconds / 10;
 
-        //CreateCircle();
-        CreateDot();
+        if (getSeconds > 10)
+        {
+
+            return false;
+        }
+
+        
+
+        MakeDots();
+        CreateCircle();
 
 
         return true;
@@ -118,11 +145,11 @@ public partial class MainWindow : Gtk.Window
         width = Allocation.Width;
         height = Allocation.Height;
 
-        sphere.X = sphere.X - speed;
+        //sphere.X = sphere.X - speed;
         //sphereY = 5 + sphereY;
 
 
-        circle.Translate(sphere.X, sphere.Y + sphereY);
+        circle.Translate(sphere.X, sphere.Y);
         circle.Arc(0, 0, sphereVolume, 0, 2 * Math.PI);
         circle.StrokePreserve();
 
@@ -151,11 +178,11 @@ public partial class MainWindow : Gtk.Window
 
 
         dotRed = dotRed + 0.01;
-        if(dotRed > 1.0)
+        if (dotRed > 1.0)
         {
             dotRed = 0.0;
         }
-        circle.SetSourceRGB(dotRed, 0.4, 0.6);
+        circle.SetSourceRGBA(dotRed, 0.4, 0.6, 1.0);
 
 
         circle.Fill();
@@ -164,8 +191,107 @@ public partial class MainWindow : Gtk.Window
         ((IDisposable)circle).Dispose();
     }
 
-    
+    void MakeDots()
+    {
+        if(dotTranspList.Count > 100)
+        {
+            dotTranspList.RemoveAt(0);
+        }
+        if(dots.Count > 100)
+        {
+            dots.RemoveAt(0);
+        }
+
+        PointD newDot;
+        newDot.X = GiveRandomLimited() + dots[dots.Count - 1].X;
+        newDot.Y = GiveRandomLimited() + dots[dots.Count - 1].Y;
+        dots.Add(newDot);
+
+        double newDotTransp = dotTranspList[0];
+        newDotTransp -= 0.01;
+        dotTranspList.Add(newDotTransp);
+
+        for (int i = 0; i < dotTranspList.Count - 1; i++)
+        {
+            dotTranspList[i] -= 0.01;
+        }
+
+        for (int i = 0; i < dots.Count; i++)
+        {
+            CreateDotFade(i);
+        }
+
+    }
+
+    void CreateDotFade(int item)
+    {
+        Cairo.Context circle = Gdk.CairoHelper.Create(drawingArea.GdkWindow);
+
+        circle.LineWidth = 0;
+
+
+
+        //dotX = GiveRandomLimited() + dotX;
+        //dotY = GiveRandomLimited() + dotY;
+
+
+        circle.Translate(dots[item].X, dots[item].Y);
+        circle.Arc(0, 0, dotVolume, 0, 2 * Math.PI);
+        //circle.StrokePreserve();
+
+        if(dotTransparent < 0.0)
+        {
+            dotTransparent = 0;
+        }
+
+        dotRed = dotRed + 0.01;
+        if (dotRed > 1.0)
+        {
+            dotRed = 0.0;
+        }
+        circle.SetSourceRGBA(dotRed, 0.4, 0.6, dotTranspList[item]);
+
+
+        circle.Fill();
+
+        circle.GetTarget().Dispose();
+        ((IDisposable)circle).Dispose();
+    }
+
+    void MakeGray()
+    {
+        ImageSurface imageSurf = new ImageSurface(Format.Argb32, widthScreen, heightScreen);
+        //Gdk.Pixbuf pixBuf = 
+
+        //Cairo.ImageSurface imgSurface = new Cairo.ImageSurface("/Image.png");
+        imageSurf.WriteToPng("/Image.png");
+    }
+
+
+    [GLib.ConnectBefore]
+    protected void OnDrawingAreaKeyPressEvent(object o, KeyPressEventArgs args)
+    {
+        dotRed = 0;
+        //args.Event.Key
+    }
+
+    protected void OnKeyPressEvent(object o, KeyPressEventArgs args)
+    {
+
+    }
+
+    protected void OnKeysChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void KeyPress(object sender, KeyPressEventArgs args)
+    {
+
+    }
 
     public double dotX { get; set; }
     public double dotY { get; set; }
+
+
 }

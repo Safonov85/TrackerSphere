@@ -2,16 +2,14 @@
   <MonoDevelop.Ide.ItemProperties.TrackerSphere PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="TrackerSphere/MainWindow.cs">
     <Files>
-      <File FileName="TrackerSphere/Program.cs" Line="1" Column="1" />
-      <File FileName="TrackerSphere/gtk-gui/MainWindow.cs" Line="1" Column="1" />
-      <File FileName="TrackerSphere/MainWindow.cs" Line="158" Column="29" />
-      <File FileName="TrackerSphere/SimulateSpheres.cs" Line="27" Column="33" />
+      <File FileName="TrackerSphere/MainWindow.cs" Line="216" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="TrackerSphere" expanded="True">
             <Node name="TrackerSphere" expanded="True">
+              <Node name="UserInterface" expanded="True" />
               <Node name="MainWindow.cs" selected="True" />
             </Node>
           </Node>

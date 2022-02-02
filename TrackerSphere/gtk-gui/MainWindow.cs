@@ -9,6 +9,10 @@ public partial class MainWindow
 
 	private global::Gtk.ComboBox comboboxColor;
 
+	private global::Gtk.ProgressBar progressbar;
+
+	private global::Gtk.Button buttonResetDraw;
+
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
@@ -50,6 +54,25 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w2 = ((global::Gtk.Fixed.FixedChild)(this.fixedFrame[this.comboboxColor]));
 		w2.X = 28;
 		w2.Y = 654;
+		// Container child fixedFrame.Gtk.Fixed+FixedChild
+		this.progressbar = new global::Gtk.ProgressBar();
+		this.progressbar.WidthRequest = 250;
+		this.progressbar.HeightRequest = 30;
+		this.progressbar.Name = "progressbar";
+		this.fixedFrame.Add(this.progressbar);
+		global::Gtk.Fixed.FixedChild w3 = ((global::Gtk.Fixed.FixedChild)(this.fixedFrame[this.progressbar]));
+		w3.X = 298;
+		w3.Y = 657;
+		// Container child fixedFrame.Gtk.Fixed+FixedChild
+		this.buttonResetDraw = new global::Gtk.Button();
+		this.buttonResetDraw.CanFocus = true;
+		this.buttonResetDraw.Name = "buttonResetDraw";
+		this.buttonResetDraw.UseUnderline = true;
+		this.buttonResetDraw.Label = global::Mono.Unix.Catalog.GetString("Reset Draw");
+		this.fixedFrame.Add(this.buttonResetDraw);
+		global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixedFrame[this.buttonResetDraw]));
+		w4.X = 732;
+		w4.Y = 643;
 		this.Add(this.fixedFrame);
 		if ((this.Child != null))
 		{
@@ -57,5 +80,8 @@ public partial class MainWindow
 		}
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+		this.KeyPressEvent += new global::Gtk.KeyPressEventHandler(this.OnKeyPressEvent);
+		this.KeysChanged += new global::System.EventHandler(this.OnKeysChanged);
+		this.drawingArea.KeyPressEvent += new global::Gtk.KeyPressEventHandler(this.OnDrawingAreaKeyPressEvent);
 	}
 }

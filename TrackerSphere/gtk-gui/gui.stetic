@@ -15,6 +15,8 @@
     <property name="DefaultWidth">1000</property>
     <property name="DefaultHeight">700</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
+    <signal name="KeyPressEvent" handler="OnKeyPressEvent" />
+    <signal name="KeysChanged" handler="OnKeysChanged" />
     <child>
       <widget class="Gtk.Fixed" id="fixedFrame">
         <property name="MemberName" />
@@ -24,6 +26,7 @@
             <property name="MemberName" />
             <property name="WidthRequest">900</property>
             <property name="HeightRequest">600</property>
+            <signal name="KeyPressEvent" handler="OnDrawingAreaKeyPressEvent" />
           </widget>
           <packing>
             <property name="X">22</property>
@@ -48,6 +51,30 @@ Orange</property>
           <packing>
             <property name="X">28</property>
             <property name="Y">654</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ProgressBar" id="progressbar">
+            <property name="MemberName" />
+            <property name="WidthRequest">250</property>
+            <property name="HeightRequest">30</property>
+          </widget>
+          <packing>
+            <property name="X">298</property>
+            <property name="Y">657</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="buttonResetDraw">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Reset Draw</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">732</property>
+            <property name="Y">643</property>
           </packing>
         </child>
       </widget>
