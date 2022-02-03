@@ -26,7 +26,8 @@
             <property name="MemberName" />
             <property name="WidthRequest">900</property>
             <property name="HeightRequest">600</property>
-            <signal name="KeyPressEvent" handler="OnDrawingAreaKeyPressEvent" />
+            <signal name="KeyPressEvent" handler="OnDrawingAreaKeyPressEvent" after="yes" />
+            <signal name="MotionNotifyEvent" handler="OnDrawingAreaMotionNotifyEvent" after="yes" />
           </widget>
           <packing>
             <property name="X">22</property>

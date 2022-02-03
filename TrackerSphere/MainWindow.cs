@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cairo;
+using Gdk;
 using Gtk;
 
 
@@ -19,6 +20,7 @@ public partial class MainWindow : Gtk.Window
     double dotTransparent = 1;
     List<PointD> dots = new List<PointD>();
     List<double> dotTranspList = new List<double>();
+    FollowMouse flwMouse = new FollowMouse();
 
     DateTime start;
 
@@ -31,6 +33,8 @@ public partial class MainWindow : Gtk.Window
     {
         Build();
 
+        //this.drawingArea.Events = ((global::Gdk.EventMask)(772));
+
         string mainTitle = "Tracking the Sphere(s)";
 
         this.Title = mainTitle;
@@ -42,7 +46,7 @@ public partial class MainWindow : Gtk.Window
         heightScreen = drawingArea.HeightRequest;
 
         start = DateTime.UtcNow;
-        
+
 
         dot.X = drawingArea.WidthRequest / 2;
         dot.Y = drawingArea.HeightRequest / 2;
@@ -73,22 +77,22 @@ public partial class MainWindow : Gtk.Window
     bool Update()
     {
         //drawingArea.GdkWindow.Clear();
-        TimeSpan current = DateTime.UtcNow - start;
-        double getSeconds = current.TotalSeconds;
-        this.Title = getSeconds.ToString("0");
-        progressbar.Fraction = getSeconds / 10;
 
-        if (getSeconds > 10)
-        {
 
-            return false;
-        }
+        //TimeSpan current = DateTime.UtcNow - start;
+        //double getSeconds = current.TotalSeconds;
+        //this.Title = getSeconds.ToString("0");
+        //progressbar.Fraction = getSeconds / 10;
 
-        
+        //if (getSeconds > 10)
+        //{
 
-        MakeDots();
-        CreateCircle();
+        //    return false;
+        //}
+        //MakeDots();
+        //CreateCircle();
 
+        flwMouse.CreateCircleFollow(drawingArea.GdkWindow, dot, 10);
 
         return true;
     }
@@ -293,5 +297,9 @@ public partial class MainWindow : Gtk.Window
     public double dotX { get; set; }
     public double dotY { get; set; }
 
-
+    protected void OnDrawingAreaMotionNotifyEvent(object o, MotionNotifyEventArgs args)
+    {
+        dot.X = args.Event.X;
+        dot.Y = args.Event.Y;
+    }
 }

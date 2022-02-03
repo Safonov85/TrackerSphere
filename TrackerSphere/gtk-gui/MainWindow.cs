@@ -83,5 +83,6 @@ public partial class MainWindow
 		this.KeyPressEvent += new global::Gtk.KeyPressEventHandler(this.OnKeyPressEvent);
 		this.KeysChanged += new global::System.EventHandler(this.OnKeysChanged);
 		this.drawingArea.KeyPressEvent += new global::Gtk.KeyPressEventHandler(this.OnDrawingAreaKeyPressEvent);
+		this.drawingArea.MotionNotifyEvent += new global::Gtk.MotionNotifyEventHandler(this.OnDrawingAreaMotionNotifyEvent);
 	}
 }
