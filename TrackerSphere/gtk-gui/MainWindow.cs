@@ -32,6 +32,7 @@ public partial class MainWindow
 		this.drawingArea = new global::Gtk.DrawingArea();
 		this.drawingArea.WidthRequest = 900;
 		this.drawingArea.HeightRequest = 600;
+        this.drawingArea.Events = ((global::Gdk.EventMask)(772));
 		this.drawingArea.Name = "drawingArea";
 		this.fixedFrame.Add(this.drawingArea);
 		global::Gtk.Fixed.FixedChild w1 = ((global::Gtk.Fixed.FixedChild)(this.fixedFrame[this.drawingArea]));

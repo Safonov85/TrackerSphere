@@ -69,30 +69,22 @@ public partial class MainWindow : Gtk.Window
 
     void ClockStart()
     {
-        GLib.Timeout.Add(10, new GLib.TimeoutHandler(Update));
+        GLib.Timeout.Add(5, new GLib.TimeoutHandler(Update));
     }
 
 
     // Simulation
     bool Update()
     {
-        //drawingArea.GdkWindow.Clear();
+        drawingArea.GdkWindow.Clear();
 
+        flwMouse.AddDotsToList(dot, widthScreen, heightScreen);
 
-        //TimeSpan current = DateTime.UtcNow - start;
-        //double getSeconds = current.TotalSeconds;
-        //this.Title = getSeconds.ToString("0");
-        //progressbar.Fraction = getSeconds / 10;
+        for (int i = 0; i < flwMouse.dotsPosition.Count - 1; i++)
+        {
+            flwMouse.CreateCircleFollow(drawingArea.GdkWindow, flwMouse.dotsPosition[i], 10, flwMouse.dotsTransparent[i]);
+        }
 
-        //if (getSeconds > 10)
-        //{
-
-        //    return false;
-        //}
-        //MakeDots();
-        //CreateCircle();
-
-        flwMouse.CreateCircleFollow(drawingArea.GdkWindow, dot, 10);
 
         return true;
     }
