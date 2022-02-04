@@ -291,6 +291,7 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnDrawingAreaMotionNotifyEvent(object o, MotionNotifyEventArgs args)
     {
+        drawingArea.GdkWindow.Cursor = new Gdk.Cursor(Gdk.CursorType.Dot);
         dot.X = args.Event.X;
         dot.Y = args.Event.Y;
     }

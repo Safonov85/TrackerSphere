@@ -12,6 +12,11 @@ public class FollowMouse
         double current = 0.0;
         for (int i = 0; i < dotsTransparent.Length - 1; i++)
         {
+            if(current > 1.0)
+            {
+                dotsTransparent[i] = 1.0;
+                break;
+            }
             current = 0.0333333 + current;
             dotsTransparent[i] = current;
         }
