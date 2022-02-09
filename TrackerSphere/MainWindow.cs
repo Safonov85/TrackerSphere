@@ -22,6 +22,8 @@ public partial class MainWindow : Gtk.Window
     List<double> dotTranspList = new List<double>();
     FollowMouse flwMouse = new FollowMouse();
 
+    BlurImage blurImg = new BlurImage();
+
     DateTime start;
 
     //KeyPressEvent += KeyPress;
@@ -47,6 +49,7 @@ public partial class MainWindow : Gtk.Window
 
         start = DateTime.UtcNow;
 
+        blurImg.OpenImageFile();
 
         dot.X = drawingArea.WidthRequest / 2;
         dot.Y = drawingArea.HeightRequest / 2;
@@ -82,7 +85,7 @@ public partial class MainWindow : Gtk.Window
 
         for (int i = 0; i < flwMouse.dotsPosition.Count - 1; i++)
         {
-            flwMouse.CreateCircleFollow(drawingArea.GdkWindow, flwMouse.dotsPosition[i], 10, flwMouse.dotsTransparent[i]);
+            flwMouse.CreateCircleFollow(drawingArea.GdkWindow, flwMouse.dotsPosition[i], 20, flwMouse.dotsTransparent[i]);
         }
 
 

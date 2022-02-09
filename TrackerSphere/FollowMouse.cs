@@ -5,7 +5,7 @@ using Cairo;
 public class FollowMouse
 {
     public List<PointD> dotsPosition = new List<PointD>();
-    public double[] dotsTransparent = new double[30];
+    public double[] dotsTransparent = new double[60];
 
     public FollowMouse()
     {
@@ -17,7 +17,7 @@ public class FollowMouse
                 dotsTransparent[i] = 1.0;
                 break;
             }
-            current = 0.0333333 + current;
+            current = 0.01666666 + current;
             dotsTransparent[i] = current;
         }
     }
@@ -27,7 +27,7 @@ public class FollowMouse
         Cairo.Context circle = Gdk.CairoHelper.Create(drawing);
 
         circle.LineWidth = 0;
-        circle.SetSourceRGB(0.7, 0.2, 0.0);
+        //circle.SetSourceRGB(0.7, 0.2, 0.0);
 
 
 
@@ -48,7 +48,7 @@ public class FollowMouse
 
     public void AddDotsToList(PointD position, int widthScreen, int heightScreen)
     {
-        if(dotsPosition.Count > 30)
+        if(dotsPosition.Count > 60)
         {
             dotsPosition.RemoveAt(0);
         }
@@ -64,7 +64,7 @@ public class FollowMouse
 
     private int GiveRandomLimited(PointD position, int widthScreen, int heightScreen)
     {
-        int num = new Random().Next(-5, 6);
+        int num = new Random().Next(0, 0);
 
         if (position.X < 0 || position.Y < 0)
         {
