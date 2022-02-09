@@ -32,6 +32,8 @@ public class BlurImage
 
     }
 
+
+    // for opening picture
     public void OpenImageFile()
     {
         var buff = System.IO.File.ReadAllBytes("starfruit.jpg");
