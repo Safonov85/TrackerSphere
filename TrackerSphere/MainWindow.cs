@@ -55,11 +55,16 @@ public partial class MainWindow : Gtk.Window
         dot.Y = drawingArea.HeightRequest / 2;
         dots.Add(dot);
 
+
+
         dotTranspList.Add(dotTransparent);
         //statusbar.Activate();
+        drawingArea.GdkWindow.Clear();
+        blurImg.DrawImage(dot, drawingArea.GdkWindow);
 
+        flwMouse.CreateCircleFollow(drawingArea.GdkWindow, dot, 20, 0.5);
 
-        ClockStart();
+        //ClockStart();
 
 
     }
@@ -81,15 +86,22 @@ public partial class MainWindow : Gtk.Window
     {
         drawingArea.GdkWindow.Clear();
 
+
+
+        blurImg.DrawImage(dot, drawingArea.GdkWindow);
+
+
+        return true;
+    }
+
+    void FollowTrail()
+    {
         flwMouse.AddDotsToList(dot, widthScreen, heightScreen);
 
         for (int i = 0; i < flwMouse.dotsPosition.Count - 1; i++)
         {
             flwMouse.CreateCircleFollow(drawingArea.GdkWindow, flwMouse.dotsPosition[i], 20, flwMouse.dotsTransparent[i]);
         }
-
-
-        return true;
     }
 
     void DrawBlackScreen()
@@ -297,5 +309,8 @@ public partial class MainWindow : Gtk.Window
         drawingArea.GdkWindow.Cursor = new Gdk.Cursor(Gdk.CursorType.Dot);
         dot.X = args.Event.X;
         dot.Y = args.Event.Y;
+
+        blurImg.DrawImage(dot, drawingArea.GdkWindow);
+
     }
 }

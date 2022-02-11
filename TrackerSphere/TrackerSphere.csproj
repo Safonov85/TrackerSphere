@@ -88,10 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="pics\starfruit.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="pics\" />
+    <None Include="starfruit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

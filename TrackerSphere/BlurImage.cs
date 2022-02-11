@@ -6,26 +6,31 @@ using GLib;
 
 public class BlurImage
 {
+    Context image;
+    ImageSurface surfImage;
+
     public BlurImage()
     {
 
     }
 
-    void DrawImage(PointD position, Gdk.Window drawing)
+    public void DrawImage(PointD position, Gdk.Window drawing)
     {
 
-        Cairo.Context image = Gdk.CairoHelper.Create(drawing);
-
-        image.LineWidth = 0;
+        image = Gdk.CairoHelper.Create(drawing);
 
 
         image.Translate(position.X, position.Y);
-        
+        //image.Fill();
+        //image.Source = new Pattern(image.con)
+        //image.Source = new Pattern(surfImage);
+        //image.SetSourceRGBA(0.9, 0.4, 0.4, 0.3);
+        //image.SetSourceColor(new Cairo.Color(0.5, 0.5, 0.5, 0.4));
 
-        image.StrokePreserve();
+        image.SetSource(new SurfacePattern(surfImage));
 
-        image.SetSourceRGBA(0.9, 0.4, 0.4, 1.0);
-        image.Fill();
+
+        image.Paint();
 
         image.GetTarget().Dispose();
         ((IDisposable)image).Dispose();
@@ -36,14 +41,22 @@ public class BlurImage
     // for opening picture
     public void OpenImageFile()
     {
-        var buff = System.IO.File.ReadAllBytes("starfruit.jpg");
+        //var buff = System.IO.File.ReadAllBytes("starfruit.jpg");
 
-        Gdk.Pixbuf display;
+        //Gdk.Pixbuf display;
+
+        // Works ONLY on png picture files
+        surfImage = new ImageSurface("starfruit.png");
+
+        //surfImage.Data.Clone();
+
+
+        image = new Context(surfImage);
 
         //display = new Gdk.Pixbuf("starfruit.jpg");
 
-        
-            //Rsvg.Pixbuf.FromFile(args[0]);
+
+        //Rsvg.Pixbuf.FromFile(args[0]);
     }
 }
 
