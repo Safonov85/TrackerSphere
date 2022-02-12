@@ -14,7 +14,7 @@ public class BlurImage
 
     }
 
-    public void DrawImage(PointD position, Gdk.Window drawing)
+    public void DrawImage(PointD position, Gdk.Window drawing, double alpha)
     {
 
         image = Gdk.CairoHelper.Create(drawing);
@@ -29,8 +29,9 @@ public class BlurImage
 
         image.SetSource(new SurfacePattern(surfImage));
 
+        image.PaintWithAlpha(alpha);
+        //image.set
 
-        image.Paint();
 
         image.GetTarget().Dispose();
         ((IDisposable)image).Dispose();
@@ -47,7 +48,10 @@ public class BlurImage
 
         // Works ONLY on png picture files
         surfImage = new ImageSurface("starfruit.png");
+        //surfImage.CreateSimilar(Content.Alpha, surfImage.Width, surfImage.Height);
+        
 
+        //surfImage.WriteToPng("lal.png");
         //surfImage.Data.Clone();
 
 

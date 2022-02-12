@@ -72,6 +72,7 @@ Orange</property>
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Reset Draw</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnButtonResetDrawClicked" />
           </widget>
           <packing>
             <property name="X">732</property>

@@ -22,6 +22,8 @@ public partial class MainWindow : Gtk.Window
     List<double> dotTranspList = new List<double>();
     FollowMouse flwMouse = new FollowMouse();
 
+    double alpha = 0.01;
+
     BlurImage blurImg = new BlurImage();
 
     DateTime start;
@@ -60,7 +62,7 @@ public partial class MainWindow : Gtk.Window
         dotTranspList.Add(dotTransparent);
         //statusbar.Activate();
         drawingArea.GdkWindow.Clear();
-        blurImg.DrawImage(dot, drawingArea.GdkWindow);
+        //blurImg.DrawImage(dot, drawingArea.GdkWindow, 1.0);
 
         flwMouse.CreateCircleFollow(drawingArea.GdkWindow, dot, 20, 0.5);
 
@@ -88,7 +90,7 @@ public partial class MainWindow : Gtk.Window
 
 
 
-        blurImg.DrawImage(dot, drawingArea.GdkWindow);
+        blurImg.DrawImage(dot, drawingArea.GdkWindow, 1.0);
 
 
         return true;
@@ -304,13 +306,42 @@ public partial class MainWindow : Gtk.Window
     public double dotX { get; set; }
     public double dotY { get; set; }
 
+
+    //does not work without in partial MainWindow.cs(deletes itself bcuz cls shld not be edited) ----> this.drawingArea.Events = ((global::Gdk.EventMask)(772));
     protected void OnDrawingAreaMotionNotifyEvent(object o, MotionNotifyEventArgs args)
     {
+        //drawingArea.GdkWindow.Clear();
+
         drawingArea.GdkWindow.Cursor = new Gdk.Cursor(Gdk.CursorType.Dot);
-        dot.X = args.Event.X;
-        dot.Y = args.Event.Y;
+        //dot.X = args.Event.X;
+        //dot.Y = args.Event.Y;
 
-        blurImg.DrawImage(dot, drawingArea.GdkWindow);
+        //for (int i = 0; i < 100; i++)
+        //{
+        //    if(alpha < 1.0)
+        //    {
+        //        break;
+        //    }
+        //    //alpha += 0.01;
+        //    dot.X -= i;
+        //}
 
+    }
+
+    protected void OnButtonResetDrawClicked(object sender, EventArgs e)
+    {
+        double currentX = dot.X;
+        for (int i = 0; i < 100; i += 1)
+        {
+            if(alpha > 1.0)
+            {
+                break;
+            }
+            //alpha += 0.01;
+            dot.X -= 0.2;
+            //dot.Y -= 0.2;
+            blurImg.DrawImage(dot, drawingArea.GdkWindow, alpha);
+        }
+        dot.X = currentX;
     }
 }
