@@ -4,7 +4,7 @@
     <Files>
       <File FileName="TrackerSphere/BlurImage.cs" Line="32" Column="37" />
       <File FileName="TrackerSphere/FollowMouse.cs" Line="73" Column="38" />
-      <File FileName="TrackerSphere/MainWindow.cs" Line="316" Column="39" />
+      <File FileName="TrackerSphere/MainWindow.cs" Line="347" Column="26" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,9 +23,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/home/mikey/Projects/TrackerSphere/TrackerSphere/MainWindow.cs" relfile="TrackerSphere/MainWindow.cs" line="316" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

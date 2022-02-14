@@ -22,7 +22,7 @@ public partial class MainWindow : Gtk.Window
     List<double> dotTranspList = new List<double>();
     FollowMouse flwMouse = new FollowMouse();
 
-    double alpha = 0.01;
+    double alpha = 0.1;
 
     BlurImage blurImg = new BlurImage();
 
@@ -127,7 +127,7 @@ public partial class MainWindow : Gtk.Window
 
     int GiveRandomLimited()
     {
-        int num = new Random().Next(-5, 6);
+        int num = new Random().Next(0, (drawingArea.WidthRequest - 20));
 
         if(dotX < 0 || dotY < 0)
         {
@@ -331,17 +331,32 @@ public partial class MainWindow : Gtk.Window
     protected void OnButtonResetDrawClicked(object sender, EventArgs e)
     {
         double currentX = dot.X;
+        double currentY = dot.Y;
+        double destinationX = GiveRandomLimited();
+        double destinationY = GiveRandomLimited();
+        double distance = Math.Abs(currentX - 130);
+        
+
         for (int i = 0; i < 100; i += 1)
         {
             if(alpha > 1.0)
             {
                 break;
             }
+            float percent = i / 100f;
             //alpha += 0.01;
-            dot.X -= 0.2;
+            dot.X = Lerp((float)currentX, (float)destinationX, percent);
+            dot.Y = Lerp((float)currentY, (float)destinationY, percent);
+
             //dot.Y -= 0.2;
             blurImg.DrawImage(dot, drawingArea.GdkWindow, alpha);
+
         }
         dot.X = currentX;
+    }
+
+    float Lerp(float firstFloat, float secondFloat, float dist)
+    {
+        return firstFloat * (1 - dist) + secondFloat * dist;
     }
 }

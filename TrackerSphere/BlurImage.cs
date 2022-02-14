@@ -47,7 +47,7 @@ public class BlurImage
         //Gdk.Pixbuf display;
 
         // Works ONLY on png picture files
-        surfImage = new ImageSurface("starfruit.png");
+        surfImage = new ImageSurface("blue_ball_dots.png");
         //surfImage.CreateSimilar(Content.Alpha, surfImage.Width, surfImage.Height);
         
 
