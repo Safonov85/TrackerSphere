@@ -4,7 +4,8 @@ using Gdk;
 using Gtk;
 using GLib;
 
-public class BlurImage
+
+public class BlurImage : Blur
 {
     Context image;
     ImageSurface surfImage;
