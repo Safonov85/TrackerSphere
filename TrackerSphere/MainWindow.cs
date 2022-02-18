@@ -346,7 +346,7 @@ public partial class MainWindow : Gtk.Window
             float percent = i / 100f;
             //alpha += 0.01;
             dot.X = Lerp((float)currentX, (float)destinationX, percent);
-            dot.Y = Lerp((float)currentY, (float)destinationY, percent);
+            //dot.Y = Lerp((float)currentY, (float)destinationY, percent);
 
             //dot.Y -= 0.2;
             blurImg.DrawImage(dot, drawingArea.GdkWindow, alpha);

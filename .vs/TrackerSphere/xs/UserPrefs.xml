@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{C19CFB90-20E4-43D7-AA7C-4FADB2AEB23C}|Default">
   <MonoDevelop.Ide.ItemProperties.TrackerSphere PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TrackerSphere/MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TrackerSphere/Properties/Blur.cs">
     <Files>
       <File FileName="TrackerSphere/BlurImage.cs" Line="8" Column="30" />
       <File FileName="TrackerSphere/FollowMouse.cs" Line="73" Column="38" />
-      <File FileName="TrackerSphere/MainWindow.cs" Line="361" Column="6" />
-      <File FileName="TrackerSphere/Properties/Blur.cs" Line="6" Column="28" />
+      <File FileName="TrackerSphere/MainWindow.cs" Line="349" Column="15" />
+      <File FileName="TrackerSphere/Properties/Blur.cs" Line="14" Column="44" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,8 +14,9 @@
             <Node name="TrackerSphere" expanded="True">
               <Node name="References" expanded="True" />
               <Node name="UserInterface" expanded="True" />
-              <Node name="Properties" expanded="True" />
-              <Node name="MainWindow.cs" selected="True" />
+              <Node name="Properties" expanded="True">
+                <Node name="Blur.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

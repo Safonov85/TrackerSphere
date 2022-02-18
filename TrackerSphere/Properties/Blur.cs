@@ -8,5 +8,10 @@ public class Blur
     public Blur()
     {
     }
+
+    private void TheBluring()
+    {
+        // very important bluring prototype
+    }
 }
 
